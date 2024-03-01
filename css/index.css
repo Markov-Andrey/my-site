@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.header h1 {
+    margin: 0;
+    color: #333;
+}
+
+.nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.content {
+    padding: 20px;
+}
+
+.site-title {
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: cursive;
+    color: #333;
+}
