@@ -19,7 +19,8 @@ const webRoutes = {
     },
     'hobby': {
         'method': hobbyPage,
-        'title': 'Образование',
+        'title': 'Хобби',
+        'css': 'hobby',
     },
     '404': {
         'method': errorPage,
@@ -36,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Выполнение роутинга
-function loadPage(page) {
+async function loadPage(page) {
     const contentDiv = document.getElementById('content');
     const title = document.getElementById('title');
 
@@ -49,6 +50,14 @@ function loadPage(page) {
         document.head.appendChild(linkElement);
     }
 
-    contentDiv.innerHTML = method();
+    contentDiv.innerHTML = '<div class="loading-spinner"/>';
+
+    try {
+        contentDiv.innerHTML = await method();
+    } catch (error) {
+        console.error('Error loading page:', error);
+        contentDiv.innerHTML = 'Failed to load the page.';
+    }
+
     title.innerHTML = pageTitle;
 }

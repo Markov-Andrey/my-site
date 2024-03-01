@@ -1,0 +1,29 @@
+.steam {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.steam .avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.steam .avatar:hover {
+    transform: scale(1.1);
+}
+
+.steam .profile-link {
+    color: #2a475e;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.steam .profile-link:hover {
+    color: #0099ff;
+}
