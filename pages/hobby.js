@@ -1,6 +1,6 @@
 async function getPlayerInfo(steamId) {
     const apiKey = '87BF5D12F113FE650BF3F106795F8E93';
-    const apiSteam = `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${apiKey}&format=json&steamids=${steamId}`;
+    const apiSteam = `https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=87BF5D12F113FE650BF3F106795F8E93&format=json&steamids=76561198796112311`;
 
     try {
         const response = await fetch(apiSteam);
