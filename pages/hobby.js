@@ -1,38 +1,23 @@
-const apiKey = '87BF5D12F113FE650BF3F106795F8E93';
-
-async function getPlayerInfo() {
-    const steamId = '76561198796112311';
-    const apiSteam = `https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${apiKey}&format=json&steamids=${steamId}`;
-
-    try {
-        const response = await fetch(apiSteam);
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        return data.response.players && data.response.players.length > 0 ? data.response.players[0] : null;
-    } catch (error) {
-        console.error('There was a problem with the fetch operation:', error);
-        return null;
-    }
-}
-
 async function hobbyPage() {
-    try {
-        const playerInfo = await getPlayerInfo();
-        if (playerInfo) {
-            console.log('Player Info:', playerInfo);
+    const steamId = '76561198796112311';
+    const steamName = 'Andre Markov';
+    const steamLogo = 'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/728880/d3ad0d6753d35b785441b0aeda66e9d9e5029c1b.png';
 
-            return `
-                <a href="${playerInfo.profileurl}" target="_blank" class="steam player">
-                    <img src="${playerInfo.avatarfull}" alt="Avatar" class="avatar">
-                    <div class="profile-link">${playerInfo.personaname}</div>
-                </a>
-            `;
-        } else {
-            console.log('Failed to fetch player info.');
-        }
-    } catch (error) {
-        console.error('Error displaying hobby page:', error);
-    }
+    const battleLogo = 'https://blzprofile.akamaized.net/static/avatar/account/38.jpg';
+    const battleName = 'AMar';
+    const battleTag = '#2420';
+
+    const apiSteam = `https://steamcommunity.com/profiles/${steamId}/`;
+    return `
+            <a href="${apiSteam}" target="_blank" class="steam player">
+                <div>Steam</div>
+                <img src="${steamLogo}" alt="Avatar" class="avatar">
+                <div class="profile-link">${steamName}</div>
+            </a>
+            <div class="steam player">
+                <div>Battle net</div>
+                <img src="${battleLogo}" alt="Avatar" class="avatar">
+                <div class="profile-link">${battleName} ${battleTag}</div>
+            </div>
+        `;
 }
