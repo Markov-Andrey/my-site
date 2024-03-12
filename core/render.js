@@ -15,7 +15,6 @@ const webRoutes = {
     'education': {
         'method': educationPage,
         'title': 'Образование',
-        'css': 'education',
     },
     'hobby': {
         'method': hobbyPage,

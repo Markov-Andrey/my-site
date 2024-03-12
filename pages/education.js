@@ -12,6 +12,7 @@ function educationPage() {
             'end': 2016,
             'location': 'УО "Белорусская государственная сельскохозяйственная академия", г. Горки',
             'hint': 'Высшее образование',
+            'icon': 'public/images/education/bgsha.webp',
         },
         {
             'start': 2018,
@@ -52,7 +53,7 @@ function educationPage() {
                 ${circle()}
                 ${timestamp(item.start)}
                 <div class="flex gap-2">
-                    ${item.icon ? `<img class="w-20 h-20" src="${item.icon}" alt="icon">` : ''}
+                    ${item.icon ? `<img class="w-20 h-20 rounded" src="${item.icon}" alt="icon">` : ''}
                     <div class="flex flex-col">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">${item.hint}</h3>
                         <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">${item.location}</p>
