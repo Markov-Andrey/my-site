@@ -1,57 +1,72 @@
 function educationPage() {
-    const currentDate = new Date();
-    const currentYear = currentDate.getFullYear();
-    let years = [1993, currentYear];
-    let height = years[1] - years[0];
-
-    let education = {
-        1: {
-            'color': '#3CB371',
-            'start': 1993,
-            'end': 1998,
+    let education = [
+        {
+            'start': 1998,
+            'end': 2010,
             'location': 'Чериковская школа № 1',
             'hint': 'Средняя школа',
+            'icon': 'public/images/education/cherikov.webp',
         },
-        2: {
-            'color': '#3CB371',
-            'start': 1993,
-            'end': 1998,
-            'location': 'Чериковская школа № 1',
-            'hint': 'Средняя школа',
+        {
+            'start': 2011,
+            'end': 2016,
+            'location': 'УО "Белорусская государственная сельскохозяйственная академия", г. Горки',
+            'hint': 'Высшее образование',
         },
-    }
+        {
+            'start': 2018,
+            'end': 2018,
+            'location': 'Республиканский центр повышения квалификации руководящих работников и специалистов лесного хозяйства, г. Ждановичи',
+            'hint': 'Повышение квалификации',
+        },
+        {
+            'start': 2018,
+            'end': 2020,
+            'location': 'УО "Белорусский государственный технологический университет", г. Минск',
+            'hint': 'Переподготовка',
+        },
+        {
+            'start': 2022,
+            'end': 2023,
+            'location': 'Моя IT школа, г. Минск',
+            'hint': 'Курсы "PHP Backend разработчик"',
+        },
+    ];
 
-    const segmentsHTML = Object.values(education).map(item => {
-        let educHeight = (item.end - item.start) / height * 100;
+    const circle = () => {
         return `
-            <div class="line-wrapper">
-                <div class="line">
-                    <div class="segment" style="
-                        top: ${(item.start - years[0]) / height * 100}%; 
-                        height: ${educHeight}%;
-                        background-color: ${item.color};
-                    "></div>
+            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-green-900 dark:bg-green-300"></div>
+        `;
+    };
+
+    const timestamp = (time) => {
+        return `
+            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">${time}</time>
+        `;
+    };
+
+
+    const segmentsHTML = education.map(item => {
+        return `
+            <li class="ps-4 bg-gradient-to-r from-cyan-900 to-transparent mb-4">
+                ${circle()}
+                ${timestamp(item.start)}
+                <div class="flex gap-2">
+                    ${item.icon ? `<img class="w-20 h-20" src="${item.icon}" alt="icon">` : ''}
+                    <div class="flex flex-col">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">${item.hint}</h3>
+                        <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">${item.location}</p>
+                    </div>
                 </div>
-                <div class="location" style="
-                    top: ${(item.start - years[0]) / height * 100}%;
-                    height: ${educHeight}%;
-                ">${item.location}</div>
-            </div>
+                ${circle()}
+                ${timestamp(item.end)}
+            </li>
         `;
     }).join('');
 
     return `
-        <div>
-            Образование
-        </div>
-        <div>
-            ${years[0]}
-        </div>
-        <div class="line-box">
+        <ol class="relative border-s border-green-200 dark:border-green-200">                  
             ${segmentsHTML}
-        </div>
-        <div>
-            ${years[1]}
-        </div>
+        </ol>
     `;
 }
