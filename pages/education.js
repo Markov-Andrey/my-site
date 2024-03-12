@@ -19,18 +19,21 @@ function educationPage() {
             'end': 2018,
             'location': 'Республиканский центр повышения квалификации руководящих работников и специалистов лесного хозяйства, г. Ждановичи',
             'hint': 'Повышение квалификации',
+            'icon': 'public/images/education/rucforest.webp',
         },
         {
             'start': 2018,
             'end': 2020,
             'location': 'УО "Белорусский государственный технологический университет", г. Минск',
             'hint': 'Переподготовка',
+            'icon': 'public/images/education/bgtu.webp',
         },
         {
             'start': 2022,
             'end': 2023,
             'location': 'Моя IT школа, г. Минск',
             'hint': 'Курсы "PHP Backend разработчик"',
+            'icon': 'public/images/education/myitscool.webp',
         },
     ];
 
@@ -49,7 +52,7 @@ function educationPage() {
 
     const segmentsHTML = education.map(item => {
         return `
-            <li class="ps-4 bg-gradient-to-r from-cyan-900 to-transparent mb-4">
+            <li class="ps-4 bg-gradient-to-r hover:from-cyan-800 from-cyan-900 to-transparent mb-4">
                 ${circle()}
                 ${timestamp(item.start)}
                 <div class="flex gap-2">
