@@ -5,31 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="title"></title>
-    <script src="core/scripts.js"></script>
     <link rel="stylesheet" href="css/index.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
 </head>
 
 <body>
 
-<header class="header">
-    <h1 class="site-title">It's my life</h1>
-    <nav class="nav">
-        <ul>
-            <li><a href="#home" onclick="loadPage('home')">Домой</a></li>
-            <li><a href="#achievements" onclick="loadPage('achievements')">Достижения</a></li>
-            <li><a href="#contact" onclick="loadPage('contact')">Контакты</a></li>
-            <li><a href="#education" onclick="loadPage('education')">Образование</a></li>
-            <li><a href="#hobby" onclick="loadPage('hobby')">Хобби</a></li>
-        </ul>
-    </nav>
-</header>
+<div id="headerContainer">
+    <!-- Container for header -->
+</div>
 
 <div id="content" class="content">
-    <!-- Сюда будет загружаться содержимое страницы -->
+    <!-- Content will be loaded here -->
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+<script src="core/scripts.js"></script>
+<script src="components/header.js"></script>
+
 </body>
 </html>

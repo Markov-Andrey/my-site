@@ -5,47 +5,11 @@ body {
     background: #172833;
 }
 
-.header {
-    background-color: #f0f0f0;
-    padding: 20px;
-}
-
-.header h1 {
-    margin: 0;
-    color: #333;
-}
-
-.nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.nav ul li {
-    display: inline;
-    margin-right: 10px;
-}
-
-.nav ul li a {
-    text-decoration: none;
-    color: #333;
-}
-
-.nav ul li a:hover {
-    text-decoration: underline;
-}
-
 .content {
     padding: 20px;
 }
 
-.site-title {
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    font-family: cursive;
-    color: #333;
-}
-
+/* Анимация загрузки */
 .loading-spinner {
     border: 5px solid rgba(0, 0, 0, 0.1);
     border-left-color: #0099ff;
@@ -62,4 +26,14 @@ body {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* Плавные переходы цвета для элементов в групповых анимированных элементах */
+.group {
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.group svg {
+    fill: currentColor;
+    transition: fill 0.3s, stroke 0.3s;
 }
