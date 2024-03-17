@@ -6,7 +6,6 @@ function educationPage() {
             'location': 'Чериковская школа № 1',
             'hint': 'Средняя школа',
             'icon': 'public/images/education/cherikov.webp',
-            'side': 'left',
         },
         {
             'start': 2011,
@@ -14,7 +13,6 @@ function educationPage() {
             'location': 'УО "Белорусская государственная сельскохозяйственная академия", г. Горки',
             'hint': 'Высшее образование',
             'icon': 'public/images/education/bgsha.webp',
-            'side': 'right',
         },
         {
             'start': 2018,
@@ -22,7 +20,6 @@ function educationPage() {
             'location': 'Республиканский центр повышения квалификации руководящих работников и специалистов лесного хозяйства, г. Ждановичи',
             'hint': 'Повышение квалификации',
             'icon': 'public/images/education/rucforest.webp',
-            'side': 'left',
         },
         {
             'start': 2018,
@@ -30,7 +27,6 @@ function educationPage() {
             'location': 'УО "Белорусский государственный технологический университет", г. Минск',
             'hint': 'Переподготовка',
             'icon': 'public/images/education/bgtu.webp',
-            'side': 'right',
         },
         {
             'start': 2022,
@@ -38,7 +34,6 @@ function educationPage() {
             'location': 'Моя IT школа, г. Минск',
             'hint': 'Курсы "PHP Backend разработчик"',
             'icon': 'public/images/education/myitscool.webp',
-            'side': 'left',
         },
     ];
 
@@ -77,12 +72,5 @@ function educationPage() {
         <ol class="relative border-s border-green-200 dark:border-green-200">                  
             ${segmentsHTML}
         </ol>
-        <div class="grid grid-cols-2">
-            <div class="border-r border-green-200 dark:border-green-200">1</div>
-            <div class="border-l border-green-200 dark:border-green-200">2</div>
-            
-            <div class="border-r border-green-200 dark:border-green-200">1</div>
-            <div class="border-l border-green-200 dark:border-green-200"></div>
-        </div>
     `;
 }

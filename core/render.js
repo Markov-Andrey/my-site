@@ -21,6 +21,10 @@ const webRoutes = {
         'title': 'Хобби',
         'css': 'hobby',
     },
+    'jobs': {
+        'method': jobsPage,
+        'title': 'Работа',
+    },
     '404': {
         'method': errorPage,
         'title': '404',

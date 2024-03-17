@@ -6,6 +6,7 @@ const scriptFiles = {
         'contact': true,
         'home': true,
         'education': true,
+        'jobs': true,
         'hobby': true,
     },
     core: {

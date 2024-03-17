@@ -24,6 +24,12 @@ const links = [
         icon: '<i class="las la-2x la-university"></i>'
     },
     {
+        href: '#jobs',
+        text: 'Работа',
+        onclick: "loadPage('jobs')",
+        icon: '<i class="las la-2x la-briefcase"></i>'
+    },
+    {
         href: '#hobby',
         text: 'Хобби',
         onclick: "loadPage('hobby')",
