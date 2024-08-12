@@ -1,39 +1,28 @@
 function jobsPage() {
     let jobs = [
         {
-            'start': 'январь 2023',
-            'end': 'май 2023',
-            'description': 'Маркетинговое агентство полного цикла',
-            'title': 'Seventop',
-            'icon': 'public/images/jobs/seventop.svg',
+            'start': 'в данный момент',
+            'end': 'апрель 2024',
+            'description': 'Логистический центр (г. Минск, РБ)',
+            'position': 'Инженер-программист',
+            'title': 'Pradius Nova',
+            'icon': 'public/images/jobs/pradius_nova.png',
         },
         {
-            'start': 'июнь 2023',
-            'end': 'март 2024',
-            'description': 'УО "Белорусская государственная сельскохозяйственная академия", г. Горки',
+            'start': 'март 2024',
+            'end': 'июнь 2023',
+            'description': 'Разработка программных решений в WEB (г. Киров, РФ)',
+            'position': 'Программист (самозанятый/удалённо)',
             'title': 'Alt Studio',
             'icon': 'public/images/jobs/union.png',
         },
         {
-            'start': 2018,
-            'end': 2018,
-            'description': 'Республиканский центр повышения квалификации руководящих работников и специалистов лесного хозяйства, г. Ждановичи',
-            'title': 'Повышение квалификации',
-            'icon': 'public/images/education/rucforest.webp',
-        },
-        {
-            'start': 2018,
-            'end': 2020,
-            'description': 'УО "Белорусский государственный технологический университет", г. Минск',
-            'title': 'Переподготовка',
-            'icon': 'public/images/education/bgtu.webp',
-        },
-        {
-            'start': 2022,
-            'end': 2023,
-            'description': 'Моя IT школа, г. Минск',
-            'title': 'Курсы "PHP Backend разработчик"',
-            'icon': 'public/images/education/myitscool.webp',
+            'start': 'май 2023',
+            'end': 'январь 2023',
+            'description': 'Маркетинговое агентство полного цикла (г. Минск, РБ)',
+            'position': 'Программист (удалённо)',
+            'title': 'Seventop',
+            'icon': 'public/images/jobs/seventop.svg',
         },
     ];
 
@@ -52,20 +41,20 @@ function jobsPage() {
 
     const segmentsHTML = jobs.map(item => {
         return `
-            <li class="ps-4 bg-gradient-to-r hover:from-cyan-800 from-cyan-900 to-transparent mb-4">
-                ${circle()}
-                ${timestamp(item.start)}
-                <div class="flex gap-2">
-                    ${item.icon ? `<img class="w-20 rounded" src="${item.icon}" alt="icon">` : ''}
-                    <div class="flex flex-col">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">${item.title}</h3>
-                        <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">${item.description}</p>
-                    </div>
+        <li class="ps-4 bg-gradient-to-r hover:from-cyan-800 from-cyan-900 to-transparent mb-4">
+            ${circle()}
+            ${timestamp(item.start)}
+            <div class="flex gap-2">
+                ${item.icon ? `<img class="w-20 h-20 object-contain rounded" src="${item.icon}" alt="icon">` : ''}
+                <div class="flex flex-col">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">${item.title}</h3>
+                    <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">${item.description}</p>
                 </div>
-                ${circle()}
-                ${timestamp(item.end)}
-            </li>
-        `;
+            </div>
+            ${circle()}
+            ${timestamp(item.end)}
+        </li>
+    `;
     }).join('');
 
     return `
