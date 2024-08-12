@@ -10,7 +10,8 @@ const scriptFiles = {
         'hobby': true,
     },
     core: {
-        'render': true
+        'render': true,
+        'modal': true,
     }
 };
 

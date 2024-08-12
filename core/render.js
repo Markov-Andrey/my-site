@@ -46,6 +46,7 @@ async function loadPage(page) {
 
     const { method, title: pageTitle, css } = webRoutes[page] || webRoutes['404'];
 
+    // Загрузка CSS, если есть
     if (css) {
         const linkElement = document.createElement('link');
         linkElement.rel = 'stylesheet';
@@ -53,10 +54,11 @@ async function loadPage(page) {
         document.head.appendChild(linkElement);
     }
 
-    contentDiv.innerHTML = '<div class="loading-spinner"/>';
+    contentDiv.innerHTML = '<div class="loading-spinner"></div>';
 
     try {
         contentDiv.innerHTML = await method();
+        initModal(); // Инициализация модалок сразу после загрузки страницы
     } catch (error) {
         console.error('Error loading page:', error);
         contentDiv.innerHTML = 'Failed to load the page.';
