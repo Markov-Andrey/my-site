@@ -26,12 +26,28 @@ async function hobbyPage() {
             items: [
                 {
                     title: 'WarCraft 3',
-                    description: 'Классический представитель расцвета RTS. Специализация: мапмейкерство, начиная с 00-х и по текущий день. Мечтаю создать аналог кооперативых командиров из SC2.',
+                    description: 'Классический представитель расцвета и легендарная RTS. Специализация: мапмейкерство, начиная с 00-х и по текущий день. Мечтаю создать аналог кооперативых командиров из SC2.',
                     photos: [
                         'public/images/hobby/warcraft1.webp',
                         'public/images/hobby/warcraft2.webp',
                     ]
-                }
+                },
+                {
+                    title: 'StarCraft 2',
+                    description: 'Легендарная RTS. Специализация: кооперативный режим SC2.',
+                    photos: [
+                        'public/images/hobby/starcraft1.webp',
+                        'public/images/hobby/starcraft2.webp',
+                    ]
+                },
+                {
+                    title: 'Satisfactory',
+                    description: 'Симулятор строительства и автоматизации фабрики. > 100 ч работы по созданию высоконагруженной и эффективной фабрики',
+                    photos: [
+                        'public/images/hobby/satisfactory1.webp',
+                        'public/images/hobby/satisfactory2.webp',
+                    ]
+                },
             ]
         }
     ];
