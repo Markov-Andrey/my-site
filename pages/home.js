@@ -3,7 +3,7 @@ function homePage() {
         <div class="flex flex-col items-center justify-center text-center">
             <div class="bg-white w-full p-6 rounded-lg shadow-md">
                 <p class="text-lg text-gray-700 mb-4">
-                    Привет! Вы на личной github-визитка Андрея Маркова.
+                    Привет! Это личная github-визитка Андрея Маркова.
                 </p>
                 <p class="text-sm text-gray-600 mb-6">
                     Fullstack developer (PHP + Laravel, JS + Vue.js, Next.js).
