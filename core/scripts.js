@@ -8,6 +8,7 @@ const scriptFiles = {
         'education': true,
         'jobs': true,
         'hobby': true,
+        'stack': true,
     },
     core: {
         'render': true,

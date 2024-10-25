@@ -25,6 +25,10 @@ const webRoutes = {
         'method': jobsPage,
         'title': 'Работа',
     },
+    'stack': {
+        'method': stackPage,
+        'title': 'Стек',
+    },
     '404': {
         'method': errorPage,
         'title': '404',
