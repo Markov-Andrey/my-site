@@ -36,20 +36,20 @@ const links = [
         icon: '<i class="las la-2x la-gamepad"></i>'
     }
 ];
-const stringClass = 'bg-cyan-900 text-blue-600 border-blue-600 dark:text-sky-400 dark:border-sky-400';
+const stringClass = 'bg-orange-600 text-white border-blue-600';
 
 function generateHeader() {
     const headerContainer = document.getElementById('headerContainer');
     headerContainer.innerHTML = `
-        <div class="border-b border-gray-200 dark:border-gray-700 dark:bg-cyan-950">
-            <ul class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
+        <div class="border-b border-gray-500">
+            <ul class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-800">
                 ${links.map(linkData => `
                     <li>
-                        <a href="${linkData.href}" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg group hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300
+                        <a href="${linkData.href}" class="transition inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg group hover:bg-orange-500 hover:text-white hover:border-orange-300
                             ${window.location.href.includes(linkData.href.slice(1)) ? stringClass : ''}" 
                             onclick="handleClick(this, '${linkData.href}')">
                             ${linkData.icon ?? ''}
-                            <span style="margin-left: 10px;">${linkData.text}</span>
+                            <span class="ml-2">${linkData.text}</span>
                         </a>
                     </li>
                 `).join('')}
