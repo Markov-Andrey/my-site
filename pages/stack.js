@@ -103,11 +103,11 @@ function stackPage() {
             <div class="flex flex-col mb-8">
                 ${stack.categories.map(category => `
                     <div class="mb-4">
-                        <h4 class="font-semibold text-lg">${category.category}</h4>
-                        <div class="flex flex-wrap justify-center gap-4">
+                        <h4 class="font-semibold text-lg mb-2">${category.category}</h4>
+                        <div class="flex flex-wrap gap-2 justify-left">
                             ${category.items.map(item => `
                                 <a href="${item.url}" target="_blank" class="block text-center">
-                                    <div class="bg-gray-100 rounded-lg flex flex-col items-center justify-center transition-transform transform hover:shadow-lg hover:bg-emerald-300 transition hover:scale-105 h-[120px] w-[120px]">
+                                    <div class="bg-gray-100 rounded-lg flex flex-col items-center justify-center transition-transform transform hover:shadow-lg hover:bg-emerald-300 transition hover:scale-105 h-[100px] w-[100px]">
                                         <img src="${item.imgSrc}" alt="${item.name}" class="w-16 h-16 mb-1">
                                         <span class="text-sm">${item.name}</span>
                                     </div>
