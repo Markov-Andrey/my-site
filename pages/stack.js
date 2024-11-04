@@ -17,7 +17,8 @@ function stackPage() {
                     category: 'Frameworks',
                     items: [
                         { name: 'Vue.js', url: 'https://vuejs.org/', imgSrc: url('vue-js.png') },
-                        { name: 'Next.js', url: 'https://nextjs.org/', imgSrc: url('next-js.svg') }
+                        { name: 'Next.js', url: 'https://nextjs.org/', imgSrc: url('next-js.svg') },
+                        { name: 'Nuxt', url: 'https://nuxt.com/', imgSrc: url('nuxt.svg') },
                     ]
                 },
                 {
