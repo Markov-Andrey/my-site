@@ -46,6 +46,7 @@ function stackPage() {
                         { name: 'Vue3 Lite-Table', url: 'https://vue3-lite-table.vercel.app', imgSrc: url('vue3-lite-table.svg') },
                         { name: 'Vueform', url: 'https://vueform.com', imgSrc: url('vueform.png') },
                         { name: 'ChartJs', url: 'https://chartjs.org', imgSrc: url('chartjs.png') },
+                        { name: 'Vuetify', url: 'https://vuetifyjs.com/en/', imgSrc: url('vuetify.svg') },
                     ]
                 }
             ]
