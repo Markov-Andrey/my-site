@@ -9,7 +9,7 @@ function homePage() {
                     Это личная github-визитка Андрея Маркова.
                 </p>
                 <p class="text-sm text-gray-600 mb-6">
-                    Fullstack developer (PHP + Laravel, JS + Vue.js, Next.js).
+                    Fullstack developer (PHP + Laravel, JS + Vue.js, Next.js, Nuxt.js).
                 </p>
                 <div class="text-left space-y-2">
                     <p class="text-sm text-gray-800">
@@ -17,7 +17,7 @@ function homePage() {
                         <a href="mailto:andremarkov@icloud.com" class="text-blue-600 hover:underline">andremarkov@icloud.com</a>
                     </p>
                     <p class="text-sm text-gray-800">
-                        <span class="font-semibold">Стек:</span> PHP + Laravel, JS + Vue.js, Next.js, и очень-очень много библиотек – всё это можно посмотреть на моей Github-странице.
+                        <span class="font-semibold">Стек:</span> PHP + Laravel, JS + Vue.js, Next.js, Nuxt.js и очень-очень много библиотек – всё это можно посмотреть на моей Github-странице.
                     </p>
                 </div>
             </div>
