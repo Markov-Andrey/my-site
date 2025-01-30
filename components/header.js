@@ -14,21 +14,24 @@ class Header {
 
     generateHeader() {
         const headerContainer = document.getElementById('headerContainer');
+        const currentHash = window.location.hash;
+
         headerContainer.innerHTML = `
             <div class="border-b border-gray-500">
                 <ul class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-800">
-                    ${this.links.map(link => this.renderLink(link)).join('')}
+                    ${this.links.map(link => this.renderLink(link, currentHash)).join('')}
                 </ul>
             </div>`;
 
         this.addEventListeners();
     }
 
-    renderLink(link) {
+    renderLink(link, currentHash) {
+        const isActive = currentHash ? currentHash === link.href : link.href === '#home';  // Проверяем, активен ли #home или текущий хэш
         return `
             <li>
                 <a href="${link.href}" class="transition inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg group hover:bg-teal-500 hover:text-white hover:border-white
-                    ${window.location.href.includes(link.href.slice(1)) ? this.stringClass : ''}">
+                    ${isActive ? this.stringClass : ''}">
                     ${link.icon}<span class="ml-2">${link.text}</span>
                 </a>
             </li>`;
