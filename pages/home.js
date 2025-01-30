@@ -1,6 +1,11 @@
-function homePage() {
-    return `
-        <div class="flex flex-col items-center justify-center text-center">
+import BasePage from './base-page.js';
+
+export default class homePage extends BasePage {
+    constructor() {
+        super();
+        this.title = 'Главная';
+        this.content = `
+            <div class="flex flex-col items-center justify-center text-center">
             <div class="bg-white w-full p-6 rounded-lg shadow-md">
                 <h1 class="text-2xl">
                     Привет!
@@ -22,5 +27,6 @@ function homePage() {
                 </div>
             </div>
         </div>
-    `;
+        `;
+    }
 }

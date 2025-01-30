@@ -1,6 +1,11 @@
-function contactPage() {
-    return `
-        <div class="flex flex-col items-center justify-center text-center">
+import BasePage from './base-page.js';
+
+export default class contactPage extends BasePage {
+    constructor() {
+        super();
+        this.title = 'Контакты';
+        this.content = `
+            <div class="flex flex-col items-center justify-center text-center">
             <div class="bg-white w-full p-6 rounded-lg shadow-md">
                 <h1 class="text-2xl font-bold text-gray-800 mb-4">Свяжитесь со мной</h1>
                 <div class="text-left space-y-3">
@@ -19,5 +24,6 @@ function contactPage() {
                 </div>
             </div>
         </div>
-    `;
+        `;
+    }
 }

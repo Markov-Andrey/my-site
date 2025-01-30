@@ -1,98 +1,83 @@
-// Объект роутера
-const webRoutes = {
-    'home': {
-        'method': homePage,
-        'title': 'Домашняя страница',
-    },
-    'achievements': {
-        'method': achievementsPage,
-        'title': 'Достижения',
-    },
-    'contact': {
-        'method': contactPage,
-        'title': 'Контакты',
-    },
-    'education': {
-        'method': educationPage,
-        'title': 'Образование',
-    },
-    'hobby': {
-        'method': hobbyPage,
-        'title': 'Хобби',
-        'css': 'hobby',
-    },
-    'jobs': {
-        'method': jobsPage,
-        'title': 'Работа',
-    },
-    'stack': {
-        'method': stackPage,
-        'title': 'Стек',
-    },
-    '404': {
-        'method': errorPage,
-        'title': '404',
-    }
-};
-
-// Первая загрузка страницы
-document.addEventListener('DOMContentLoaded', () => {
-    const hash = window.location.hash;
-    const page = hash ? hash.substring(1) : 'home';
-
-    webRoutes.hasOwnProperty(page) ? loadPage(page) : loadPage('404');
-
-    // Обновление активной ссылки в хэдере после загрузки DOM
-    requestAnimationFrame(() => {
-        updateActiveLink(page);
-    });
-});
-
-// Выполнение роутинга
-async function loadPage(page) {
-    const contentDiv = document.getElementById('content');
-    const title = document.getElementById('title');
-
-    const { method, title: pageTitle, css } = webRoutes[page] || webRoutes['404'];
-
-    // Убираем активную ссылку у всех элементов
-    document.querySelectorAll('.group').forEach(link => {
-        link.classList.remove('active-link');
-    });
-
-    // Находим текущую ссылку и добавляем класс active-link
-    const currentLink = [...document.querySelectorAll('.group')].find(link => link.getAttribute('href') === `#${page}`);
-    if (currentLink) {
-        currentLink.classList.add('active-link');
+class Router {
+    constructor() {
+        this.contentDiv = document.getElementById('content');
+        this.title = document.getElementById('title');
     }
 
-    // Загрузка CSS, если есть
-    if (css) {
-        const linkElement = document.createElement('link');
-        linkElement.rel = 'stylesheet';
-        linkElement.href = `css/${css}.css`;
-        document.head.appendChild(linkElement);
+    // Инициализация роутера
+    init() {
+        document.addEventListener('DOMContentLoaded', () => {
+            const page = window.location.hash.slice(1) || 'home';
+            this.updatePage(page);
+            this.updateActiveLink(page);
+        });
+
+        window.addEventListener('hashchange', () => {
+            const page = window.location.hash.slice(1) || 'home';
+            this.updatePage(page);
+            this.updateActiveLink(page);
+        });
     }
 
-    contentDiv.innerHTML = '<div class="loading-spinner"></div>';
+    // Обновление страницы (title и CSS)
+    async updatePage(page) {
+        const route = await this.loadPageComponent(page);
+        this.title.innerHTML = route.title;
 
-    try {
-        contentDiv.innerHTML = await method();
-        initModal();
-        if (currentLink) {
-            document.querySelectorAll('.group').forEach(link => {
-                link.classList.remove(...stringClass.split(' '));
-                const icon = link.querySelector('i');
-                icon.style.transition = 'fill 0.3s';
-            });
-            currentLink.classList.add(...stringClass.split(' '));
+        if (route.css) {
+            this.loadCSS(route.css);
         }
-    } catch (error) {
-        console.error('Error loading page:', error);
-        contentDiv.innerHTML = 'Failed to load the page.';
+
+        // Подгружаем компонент
+        this.contentDiv.innerHTML = route.component();
     }
 
-    window.location.hash = `#${page}`;
+    // Динамическая загрузка компонента страницы
+    async loadPageComponent(page) {
+        let component;
+        let title = 'Страница не найдена';
+        let css = null;
 
-    title.innerHTML = pageTitle;
+        try {
+            // Динамически загружаем компонент по имени файла
+            const module = await import(`./pages/${page}.js`);
+            component = module.default;
+            title = component.title || title;
+            css = component.css || null;
+        } catch (err) {
+            console.error(`Ошибка при загрузке компонента ${page}: ${err}`);
+            component = () => '<h1>Ошибка загрузки страницы</h1>';
+        }
+
+        return { title, component, css };
+    }
+
+    // Обновление активной ссылки
+    updateActiveLink(page) {
+        const currentLink = [...document.querySelectorAll('.group')].find(link => link.getAttribute('href') === `#${page}`);
+        if (currentLink) {
+            this.clearActiveLinks();
+            currentLink.classList.add('active-link');
+        }
+    }
+
+    // Удаление класса активной ссылки
+    clearActiveLinks() {
+        document.querySelectorAll('.group').forEach(link => link.classList.remove('active-link'));
+    }
+
+    // Загрузка CSS
+    loadCSS(css) {
+        let link = document.querySelector(`link[href="css/${css}.css"]`);
+        if (!link) {
+            link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = `css/${css}.css`;
+            document.head.appendChild(link);
+        }
+    }
 }
+
+// Создаем и запускаем роутер
+const router = new Router();
+router.init();

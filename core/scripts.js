@@ -1,40 +1,43 @@
-// scriptLoader.js
-import scriptConfig from '../constants/config.js';
-
 class ScriptLoader {
-    constructor(config) {
-        this.scriptFiles = config || {};
-    }
+    async loadScript(fileName) {
+        try {
+            const pageModule = await import(`/pages/${fileName}.js`);
+            const page = new pageModule.default();
 
-    // Метод для подключения скриптов
-    includeScripts(obj, folder = '') {
-        for (const key in obj) {
-            const filePath = folder ? `${folder}/${key}` : key;
-            if (typeof obj[key] === 'object') {
-                // Рекурсивный вызов для вложенных объектов
-                this.includeScripts(obj[key], filePath);
-            } else {
-                if (obj[key]) {
-                    this.loadScript(filePath);
-                }
+            document.title = page.title || '';
+            if (page.css) {
+                this.loadCSS(page.css);
             }
+
+            document.getElementById('content').innerHTML = page.content;
+        } catch {
+            await this.loadScript('404');
         }
     }
 
-    // Метод для создания тега <script>
-    loadScript(filePath) {
-        const script = document.createElement('script');
-        script.src = `${filePath}.js`;
-        script.type = 'text/javascript';
-        document.head.appendChild(script);
+    loadCSS(css) {
+        if (Array.isArray(css)) {
+            css.forEach(style => {
+                let link = document.querySelector(`link[href="css/${style}.css"]`);
+                if (!link) {
+                    link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.href = `css/${style}.css`;
+                    document.head.appendChild(link);
+                }
+            });
+        }
     }
 
-    // Метод для запуска процесса подключения
+    loadPageScript() {
+        this.loadScript(window.location.hash.slice(1) || 'home');
+    }
+
     init() {
-        this.includeScripts(this.scriptFiles);
+        this.loadPageScript();
+        window.addEventListener('hashchange', () => this.loadPageScript());
     }
 }
 
-// Создаем экземпляр с конфигурацией и запускаем
-const scriptLoader = new ScriptLoader(scriptConfig);
+const scriptLoader = new ScriptLoader();
 scriptLoader.init();
