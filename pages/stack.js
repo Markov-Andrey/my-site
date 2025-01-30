@@ -58,7 +58,8 @@ function stackPage() {
                     category: 'Programming Languages',
                     items: [
                         { name: 'PHP', url: 'https://www.php.net/', imgSrc: url('PHP.png') },
-                        { name: 'Python', url: 'https://www.python.org/', imgSrc: url('Python.png') }
+                        { name: 'Python', url: 'https://www.python.org/', imgSrc: url('Python.png') },
+                        { name: 'Java', url: 'https://www.java.com/', imgSrc: url('java.svg') },
                     ]
                 },
                 {
@@ -91,6 +92,14 @@ function stackPage() {
                     items: [
                         { name: 'Backpack', url: 'https://backpackforlaravel.com/', imgSrc: url('backpack-of-laravel.png') },
                         { name: 'Moonshine', url: 'https://moonshine-laravel.com', imgSrc: url('moonshine.png') },
+                    ]
+                },
+                {
+                    category: 'Database',
+                    items: [
+                        { name: 'Oracle', url: 'https://oracle.com/', imgSrc: url('oracle.svg') },
+                        { name: 'MySQL', url: 'https://www.mysql.com/', imgSrc: url('mysql.svg') },
+                        { name: 'Redis', url: 'https://redis.io/', imgSrc: url('redis.svg') },
                     ]
                 },
             ]
