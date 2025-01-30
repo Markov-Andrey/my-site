@@ -41,6 +41,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const page = hash ? hash.substring(1) : 'home';
 
     webRoutes.hasOwnProperty(page) ? loadPage(page) : loadPage('404');
+
+    // Обновление активной ссылки в хэдере после загрузки DOM
+    requestAnimationFrame(() => {
+        updateActiveLink(page);
+    });
 });
 
 // Выполнение роутинга
@@ -49,6 +54,17 @@ async function loadPage(page) {
     const title = document.getElementById('title');
 
     const { method, title: pageTitle, css } = webRoutes[page] || webRoutes['404'];
+
+    // Убираем активную ссылку у всех элементов
+    document.querySelectorAll('.group').forEach(link => {
+        link.classList.remove('active-link');
+    });
+
+    // Находим текущую ссылку и добавляем класс active-link
+    const currentLink = [...document.querySelectorAll('.group')].find(link => link.getAttribute('href') === `#${page}`);
+    if (currentLink) {
+        currentLink.classList.add('active-link');
+    }
 
     // Загрузка CSS, если есть
     if (css) {
@@ -62,11 +78,21 @@ async function loadPage(page) {
 
     try {
         contentDiv.innerHTML = await method();
-        initModal(); // Инициализация модалок сразу после загрузки страницы
+        initModal();
+        if (currentLink) {
+            document.querySelectorAll('.group').forEach(link => {
+                link.classList.remove(...stringClass.split(' '));
+                const icon = link.querySelector('i');
+                icon.style.transition = 'fill 0.3s';
+            });
+            currentLink.classList.add(...stringClass.split(' '));
+        }
     } catch (error) {
         console.error('Error loading page:', error);
         contentDiv.innerHTML = 'Failed to load the page.';
     }
+
+    window.location.hash = `#${page}`;
 
     title.innerHTML = pageTitle;
 }
