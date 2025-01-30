@@ -42,7 +42,7 @@ async function hobbyPage() {
                 },
                 {
                     title: 'Satisfactory',
-                    description: 'Симулятор строительства и автоматизации фабрики. > 100 ч работы по созданию высоконагруженной и эффективной фабрики',
+                    description: 'Симулятор строительства и автоматизации фабрики. > 200 ч работы по созданию высоконагруженной и эффективной фабрики',
                     photos: [
                         'public/images/hobby/satisfactory1.webp',
                         'public/images/hobby/satisfactory2.webp',
