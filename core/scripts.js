@@ -1,32 +1,40 @@
-// подключение всех скриптов вручную, флаг подключает/отключает файл, поддерживается любая вложенность
-const scriptFiles = {
-    pages: {
-        '404': true,
-        'achievements': true,
-        'contact': true,
-        'home': true,
-        'education': true,
-        'jobs': true,
-        'hobby': true,
-        'stack': true,
-    },
-    core: {
-        'render': true,
-        'modal': true,
-    }
-};
+// scriptLoader.js
+import scriptConfig from '../constants/config.js';
 
-function includeScripts(obj, folder = '') {
-    for (const key in obj) {
-        const filePath = folder ? `${folder}/${key}` : key;
-        if (typeof obj[key] === 'object') {
-            includeScripts(obj[key], filePath);
-        } else {
-            if (obj[key]) {
-                document.write(`<script src="${filePath}.js"></script>`);
+class ScriptLoader {
+    constructor(config) {
+        this.scriptFiles = config || {};
+    }
+
+    // Метод для подключения скриптов
+    includeScripts(obj, folder = '') {
+        for (const key in obj) {
+            const filePath = folder ? `${folder}/${key}` : key;
+            if (typeof obj[key] === 'object') {
+                // Рекурсивный вызов для вложенных объектов
+                this.includeScripts(obj[key], filePath);
+            } else {
+                if (obj[key]) {
+                    this.loadScript(filePath);
+                }
             }
         }
     }
+
+    // Метод для создания тега <script>
+    loadScript(filePath) {
+        const script = document.createElement('script');
+        script.src = `${filePath}.js`;
+        script.type = 'text/javascript';
+        document.head.appendChild(script);
+    }
+
+    // Метод для запуска процесса подключения
+    init() {
+        this.includeScripts(this.scriptFiles);
+    }
 }
 
-includeScripts(scriptFiles);
+// Создаем экземпляр с конфигурацией и запускаем
+const scriptLoader = new ScriptLoader(scriptConfig);
+scriptLoader.init();
